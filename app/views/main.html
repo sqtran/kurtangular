@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>'Allo, {{greeter}} 'Allo! </h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
@@ -17,7 +17,17 @@
   <p>
     AngularJS is a toolset for building the framework most suited to your application development.
   </p>
-
+  
+  <p>{{whoismyhero}}</p>
+  
+  <div>{{data}}</div>
+  
+  <button type="button" ng-click="getdata(zipcode)">Get Weather Data</button>
+  <input type="text" ng-model="zipcode"></input>
+  
   <h4>Karma</h4>
   <p>Spectacular Test Runner for JavaScript.</p>
+  <br/>
+  Enter your name
+  <input type="text" ng-model="greeter"></input>
 </div>
