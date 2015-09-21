@@ -1,0 +1,16 @@
+<div ng-show="success_message" class="alert alert-success">
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+<div ng-show="warn_message" class="alert alert-warning">
+  <strong>Warning!</strong> Indicates a warning that might need attention.
+</div>
+
+<table class="table table-bordered">
+    <tr><th ng-click="sortme()">Name</th></tr>
+    <tr data-ng-repeat="x in data">
+        <td>{{x}}</td>
+    </tr>
+</table>
+
+<input type="text" ng-model="add_name"></input> 
+<button type="button" ng-click="addme()">Add Name</button>
