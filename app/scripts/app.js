@@ -34,6 +34,9 @@ angular
       .when('/contact', {
         templateUrl: 'views/contact.html'
       })
+     .when('/secret', {
+        templateUrl: 'views/secret.html'
+      })
       .when('/data', {
         templateUrl: 'views/data.html',
         controller: 'DataCtrl'
