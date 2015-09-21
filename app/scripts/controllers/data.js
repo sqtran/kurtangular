@@ -2,7 +2,19 @@
 
 angular.module('kurtangularApp')
   .controller('DataCtrl', function ($scope) {
-	  $scope.data = ['Steve Harvey', 'Steve Jobs', 'Steve Wozniak', 'Steve Carell', 'Steve Martin', 'Steve Austin']
+	  
+	  function initdata() {
+		  $scope.data = ['Steve Harvey', 'Steve Jobs', 'Steve Wozniak', 'Steve Carell', 'Steve Martin', 'Steve Austin'];
+	  }
+	  
+	  if(!localStorage.data) {
+	 	  console.log("creating a list of GOATs now");
+	 	  initdata();
+		  localStorage.data = JSON.stringify($scope.data);
+	  }
+	  else {
+		  $scope.data = JSON.parse(localStorage.data);
+	  }
 	  
 	  function sortme() {
 		  $scope.data = $scope.data.reverse();
@@ -12,7 +24,7 @@ angular.module('kurtangularApp')
 	  function addme() {
 		  console.log("Someone sent : " + $scope.add_name);
 		  
-		  if($scope.data.indexOf($scope.add_name) != -1) {
+		  if($scope.data.indexOf($scope.add_name) !== -1) {
 			  console.log("Found a duplicate!");
 			  $scope.success_message = false;
 			  $scope.warn_message = true;
@@ -29,8 +41,20 @@ angular.module('kurtangularApp')
 			  $scope.warn_message = true;
 			  $scope.success_message = false;
 		  }
-	  }
 
+		  // save to HTML 5 local storage
+		  localStorage.data = JSON.stringify($scope.data);
+	  }
+	  
+	  function clearstorage() {
+		  console.log("clearing local storage data");
+		  localStorage.clear();
+		  initdata();
+	  }
+	  
+
+	  
+	  $scope.clearstorage = clearstorage;
 	  $scope.sortme = sortme;
 	  $scope.addme = addme;
   });
